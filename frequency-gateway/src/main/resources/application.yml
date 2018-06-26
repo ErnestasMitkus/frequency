@@ -1,0 +1,23 @@
+server:
+  port: 4000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${REGISTRY_SERVICE_ZONE}
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+logging:
+  level:
+    root: INFO
+zuul:
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  routes:
+    api:
+      path: /api/**
+      serviceId: frequency-api
+  ignored-services: '*'
