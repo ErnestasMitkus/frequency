@@ -1,10 +1,20 @@
 server:
-  port: 4000
+  port: 0
+spring:
+  application:
+    name: frequency-config
+  cloud:
+    config:
+      enabled: false
+      server:
+        native:
+          search-locations: classpath:/service
+  profiles:
+     active: native
 eureka:
   client:
     serviceUrl:
       defaultZone: ${REGISTRY_SERVICE_ZONE}
-    register-with-eureka: false
   instance:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 1

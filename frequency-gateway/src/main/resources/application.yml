@@ -12,12 +12,3 @@ eureka:
 logging:
   level:
     root: INFO
-zuul:
-  host:
-    connect-timeout-millis: 60000
-    socket-timeout-millis: 60000
-  routes:
-    api:
-      path: /api/**
-      serviceId: frequency-api
-  ignored-services: '*'

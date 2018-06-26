@@ -1,7 +1,9 @@
 package org.zenitech.frequencyapi.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import reactor.core.publisher.Mono;
 
 import java.util.concurrent.Callable;
 
@@ -9,8 +11,13 @@ import java.util.concurrent.Callable;
 public class ApiController {
 
     @GetMapping("/echo/{text}")
-    public Callable<String> echo(@PathVariable("text") String text) {
-        return () -> "echo: " + text;
+    public Mono<String> echo(@PathVariable("text") String text) {
+        return Mono.just(text);
+    }
+
+    @GetMapping("/config")
+    public Mono<Integer> config(@Value("${my.value}") Integer value) {
+        return Mono.just(value);
     }
 
     @GetMapping("/upload")

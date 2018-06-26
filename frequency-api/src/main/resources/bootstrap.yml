@@ -1,14 +1,20 @@
-server:
-  port: 4000
+spring:
+  application:
+    name: frequency-api
+  cloud:
+    config:
+      discovery:
+        serviceId: frequency-config
+        enabled: true
 eureka:
   client:
     serviceUrl:
       defaultZone: ${REGISTRY_SERVICE_ZONE}
-    register-with-eureka: false
   instance:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
+    instance-id: frequency-api:${random.uuid}
 logging:
   level:
-    root: INFO
+    root: WARN
