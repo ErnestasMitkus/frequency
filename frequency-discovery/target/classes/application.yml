@@ -8,7 +8,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: ${REGISTRY_SERVICE_ZONE}
+      defaultZone: http://localhost:8080/eureka
 logging:
   level:
     root: INFO
