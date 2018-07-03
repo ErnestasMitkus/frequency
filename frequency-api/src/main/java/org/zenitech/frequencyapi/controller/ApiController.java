@@ -22,7 +22,7 @@ public class ApiController {
 
     @GetMapping("/echo/{text}")
     public Mono<String> echo(@PathVariable("text") String text) {
-        return frequencyServiceClient.echo(text);
+        return Mono.just(frequencyServiceClient.echo(text));
     }
 
     @GetMapping("/config")
@@ -35,12 +35,14 @@ public class ApiController {
         return "uploading";
     }
 
-
     @PostMapping("/upload")
     public Callable<String> uploadFiles(@RequestPart("uploadingFiles") MultipartFile[] uploadingFiles) {
         for (MultipartFile uploadedFile : uploadingFiles) {
             System.out.println(uploadedFile.getName());
         }
+        // convert files to array of lines
+        // for each line call service to count frequency
+        // merge frequencies with map reduce
         return () -> "redirect:/upload";
     }
     // avro, protobuf v3
