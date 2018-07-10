@@ -17,4 +17,4 @@ eureka:
     instance-id: frequency-api:${random.uuid}
 logging:
   level:
-    root: WARN
+    root: INFO
