@@ -1,5 +1,13 @@
 server:
   port: 4000
+spring:
+  application:
+    name: frequency-gateway
+  cloud:
+    config:
+      discovery:
+        serviceId: frequency-config
+        enabled: true
 eureka:
   client:
     serviceUrl:
